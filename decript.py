@@ -26,21 +26,26 @@ def cifrado() -> str:
             
 def decifrar(arq_ou_frase, escolha_arq_frase) -> str:
     """ Executa o brute force de César """
-    
-    mensagem_cifrada = []
+
+    frase_cifra = arq_ou_frase.readline()
+    mensagem_decifrada = []
+    rota= 1
     
     if escolha_arq_frase == 'arq' or escolha_arq_frase == 'arquivo':
-        rota = 1
         while rota <= 26:  #26 pq é o numero de possibilidades num alfabeto
-            
-            for frase in arq_ou_frase:
-                for letra in frase:                
-                    if letra in './: ':
-                        mensagem_cifrada.append(letra)
-                    else:
-                        mensagem_cifrada.append(chr(ord(letra) - rota))
-                print(''.join(mensagem_cifrada))
-        rota += 1
+            for letra in frase_cifra:                
+                if letra in './: ':
+                    mensagem_decifrada.append(letra)
+                else:
+                    mensagem_decifrada.append(chr(ord(letra) - rota))
+            mensagem_decifrada.append('\n')
+            rota += 1
+        mensagem_limpa= ''.join(mensagem_decifrada)
+        print(mensagem_limpa)
+
+        
+        
+
     
     else:
         print(arq_ou_frase,'\n')
